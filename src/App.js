@@ -1,7 +1,12 @@
 // import Api from './services/api';
 import axio from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import "./App.css";
+import Card from "./components/Card";
+import Header from './components/Header';
+import Lista from './components/Lista';
+
 
 export default class App extends Component {
   state = {
@@ -75,14 +80,15 @@ export default class App extends Component {
     const { cards } = this.state;
     return (
       <div className="App">
-        <h1>desafio profectum</h1>
-        <ul>
+        <Header  text='Desafio Profectum'/>
+        <Lista>
           {cards.map((card) => (
-            <li key={card.title}>
-              <h1>{card.title}</h1>
-            </li>
+            <Card key={card.title} 
+            title={card.title} 
+            porpose={card.fields[1].value}
+            finishDate={card.fields[0].value}/>
           ))}
-        </ul>
+        </Lista>
       </div>
     );
   }
